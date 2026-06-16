@@ -36,6 +36,7 @@ C（Conflict Arbiter）是万物衍生中的仲裁者。当不同数据源对同
     C   conflict-arbiter → 冲突仲裁  ← 你在这里
 ```
 ```
+
 ---
 ```
 ## 🧩 这个项目是什么
@@ -54,6 +55,7 @@ C（Conflict Arbiter）是万物衍生中的仲裁者。当不同数据源对同
 > 我们说：但一个物种可能被三个保护名录给出三种结论。
 > 我们的工作是——找出真相。
 ```
+
 ---
 ```
 ## ⚡ 快速上手
@@ -68,6 +70,7 @@ print(result)
 "
 ```
 ```
+
 ---
 ```
 ## 🚀 核心能力
@@ -86,6 +89,7 @@ print(result)
 | [culter-agent](../culter-agent/) | P₃ | 🐟 鲌类专研 |
 | [conflict-arbiter](../conflict-arbiter/) | C | 🔥 冲突仲裁 |
 ```
+
 ---
 ---
 
@@ -108,6 +112,7 @@ print(result)
   🐟 culter-agent      → 鲌类专研 (P₃)
   🔥 conflict-arbiter  → 冲突仲裁 (C)
 ```
+
 > 🌊 万物皆变 · Panta Rhei
 >
 > 🏛️ 赫拉克利特说：人不能两次踏进同一条河流。
