@@ -1,4 +1,4 @@
-﻿# Conflict Arbiter 🔥
+# Conflict Arbiter 🔥
 
 **C 万物衍生** — 多源保护级别冲突检测 · 中国优先加权 · 时空可比性。
 
@@ -75,25 +75,8 @@ print(result)
 ```
 ## 🚀 核心能力
 ```
-| 🚀 能力 | 📝 说明 |
-|:-----|:------|
-| **多源冲突检测** | IUCN / 中国红皮书 / CITES / 国保名录 |
-| **中国优先加权** | 中国分布物种以中国分类为权威 |
-| **时空可比性** | 区分"不同时间/空间的声明"与"真正矛盾" |
-| **证据链追溯** | taxonomy_log 记录每次变更的来源和证据 |---------|:--------:|:--------|
-| [fish-ecology-assistant](../fish-ecology-assistant/) | V0 | 📦 知识供给 |
-| [cognitive-search-engine](../cognitive-search-engine/) | V1 | 🔍 搜索验证 |
-| [eon-core](../eon-core/) | Coord | ⚙️ 协调内核 |
-| [porpoise-agent](../porpoise-agent/) | P₁ | 🐬 江豚专研 |
-| [coilia-agent](../coilia-agent/) | P₂ | 🐟 刀鲚专研 |
-| [culter-agent](../culter-agent/) | P₃ | 🐟 鲌类专研 |
-| [conflict-arbiter](../conflict-arbiter/) | C | 🔥 冲突仲裁 |
-```
 
----
----
 
-```
 ## 🔗 生态体系
 ```
 > 🔥 和则无穷力量，分则顶尖专家引擎。

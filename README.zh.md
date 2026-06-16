@@ -1,4 +1,4 @@
-﻿# Conflict Arbiter 🔥
+# Conflict Arbiter 🔥
 
 **C 万物衍生** — 多源保护级别冲突检测 · 中国优先加权 · 时空可比性。
 
