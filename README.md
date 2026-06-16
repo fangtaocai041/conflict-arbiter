@@ -2,22 +2,25 @@
 
 **C 万物衍生** — 多源保护级别冲突检测 · 中国优先加权 · 时空可比性。
 
-> 万物皆变 · Panta Rhei
+> 🌊 万物皆变 · Panta Rhei
 >
 > IUCN 说濒危，国标说无危，CITES 说附录 II。
 > 一个物种，三张红牌——谁是对的？
 
-[English](README.md) · [中文版](README.zh.md) · [更新日志](CHANGELOG.md)
+[![license](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
+[![Python](https://img.shields.io/badge/python-3.11+-blue)](https://python.org)
+
+[English](README.md) · [中文](README.zh.md) · [更新日志](CHANGELOG.md)
 
 ---
 
-## 核心哲学
+## 🎯 核心哲学
 
 > 世界是动态的，知识是暂时的，涌现是常态。
 
 C（Conflict Arbiter）是万物衍生中的仲裁者。当不同数据源对同一物种的保护级别给出不同结论时——IUCN 说 CR、中国红皮书说 EN、CITES 说附录 II——它来裁决。
 
-### 在万物中的角色
+### 🔗 在万物中的角色
 
 ```
 三生万物架构：
@@ -35,7 +38,7 @@ C（Conflict Arbiter）是万物衍生中的仲裁者。当不同数据源对同
 
 ---
 
-## 这个项目是什么
+## 🧩 这个项目是什么
 
 保护生物学中最尴尬的问题之一：同一个物种，不同的保护名录给出不同的结论。
 
@@ -53,7 +56,7 @@ C（Conflict Arbiter）是万物衍生中的仲裁者。当不同数据源对同
 
 ---
 
-## 快速上手
+## ⚡ 快速上手
 
 ```bash
 # 直接调用仲裁引擎
@@ -67,9 +70,9 @@ print(result)
 
 ---
 
-## 核心能力
+## 🚀 核心能力
 
-| 能力 | 说明 |
+| 🚀 能力 | 📝 说明 |
 |:-----|:------|
 | **多源冲突检测** | IUCN / 中国红皮书 / CITES / 国保名录 |
 | **中国优先加权** | 中国分布物种以中国分类为权威 |
@@ -78,7 +81,12 @@ print(result)
 
 ---
 
-> 鱼在水里，你在岸上，代码在中间。
-> 愿每一次仲裁都经得起时间的检验。
+> 🌊 万物皆变 · Panta Rhei
 >
-> **最后更新: 2026-06-21 · Reasonix Code · DeepSeek 驱动**
+> 🏛️ 赫拉克利特说：人不能两次踏进同一条河流。
+>
+> 💻 我们说：但一个物种可能被三个保护名录给出三种结论。我们的工作是——找出真相。
+>
+> **📅 最后更新: 2026-06-21 · 🖥️ Reasonix Code · ⚡ DeepSeek 驱动**
+
+[⬆ 回到顶部](#)
