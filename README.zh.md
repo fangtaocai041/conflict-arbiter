@@ -108,9 +108,9 @@ conflict-arbiter/
 │   │   ├── detect_conflicts()    ← 多源保护等级冲突检测
 │   │   ├── arbitrate()           ← 通用声明仲裁
 │   │   └── _normalize_source()   ← 保护等级→数值映射
-│   └── adapter.py                ← 跨项目接口
+│   └── adapter.py                ← 跨项目接口 (IProjectAdapter)
 ├── config/
-│   ├── agent.yaml                ← 阈值/权重/熔断配置
+│   ├── agent.yaml                ← 阈值/权重/熔断配置 (v1.0.0)
 │   └── arbitration_rules.yaml    ← 仲裁规则
 ├── pyproject.toml
 └── Dockerfile
@@ -121,16 +121,36 @@ conflict-arbiter/
 ## ⚙️ 配置
 
 ```yaml
-# config/agent.yaml
-trust_thresholds:
-  high: 75
-  medium: 45
-  low: 20
-source_weights:
-  chinese_red_list: 100
-  provincial_protection: 90
-  iucn: 40
-  cites: 40
+# config/agent.yaml — 冲突仲裁者 v1.0.0
+agent:
+  name: "Conflict Arbiter"
+  version: "1.0.0"
+  element: "火 🟥"
+  role: "C (Conflict) → V4 (ArbitrateVertex)"
+
+arbiter:
+  trust_thresholds:
+    high: 80      # ≥80: 直接采纳
+    medium: 60    # 60-79: 加权仲裁
+    low: 40       # 40-59: 标记冲突, 需人工复核
+    reject: 40    # <40: 熔断, 拒绝采纳
+  source_weights:
+    iucn: 90
+    cites: 90
+    chinese_red_list: 80
+    provincial_protection: 70
+    peer_reviewed_literature: 75
+    survey_report: 60
+    news_media: 30
+    citizen_science: 20
+  circuit_breaker:
+    max_conflict_level: 3
+    min_sources_for_consensus: 3
+  conflict_levels:
+    0: "完全一致"
+    1: "轻微差异 (可忽略)"
+    2: "显著差异 (需加权仲裁)"
+    3: "严重对立 (熔断 → 人工复核)"
 ```
 
 ---
