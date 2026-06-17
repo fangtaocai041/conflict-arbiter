@@ -59,6 +59,9 @@ python -m conflict_arbiter arbitrate "Coilia nasus"
 | 🔬 Domain Analysis | Species-specific research pipeline |
 | 📡 Triangle Powered | V0 knowledge + V1 search + Coord orchestration |
 | 🧠 Cognitive Loop | ReAct pattern for iterative analysis |
+| 🌐 IUCN API Client | IUCN Red List API v4 实时评估数据接入 |
+| 📋 CITES API Client | CITES Species+ Checklist API 附录列名查询 |
+| 🛠️ CLI Tool | `scripts/arbitrate.py` — 命令行冲突仲裁工具 |
 
 ---
 
