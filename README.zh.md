@@ -1,35 +1,69 @@
-![Python](https://img.shields.io/badge/Python-3.10%2B-blue?style=for-the-badge&logo=python) ![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge) ![Version](https://img.shields.io/badge/Version-v1.0.0-blueviolet?style=for-the-badge) ![Conflict](https://img.shields.io/badge/Conflict-4-level-red?style=for-the-badge) ![China](https://img.shields.io/badge/China-Weighted-orange?style=for-the-badge) ![Circuit](https://img.shields.io/badge/Circuit-Breaker-yellow?style=for-the-badge) ![Triangle](https://img.shields.io/badge/Triangle-Powered-9cf?style=for-the-badge)
+<p align="center">
+  🇬🇧 <a href="README.md">English</a>
+</p>
 
-[English](README.md) · [中文](README.zh.md)
+# 🔥 Conflict Arbiter — 冲突仲裁 (C)
 
-🔥 万物皆流。
+> **角色**: C — 三生万物 S-T-V-P₁-P₂ 六体架构中的衍生冲突仲裁层
+> **问题**: 当 S（知识供给）与 V（搜索验证）意见不一，或多个衍生项目产出矛盾发现时，谁来裁定？
+> **方案**: C — 多源保护级加权、熔断器保护的冲突仲裁引擎
+
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Version](https://img.shields.io/badge/version-v1.0.1-8b5cf6)]()
+[![Python](https://img.shields.io/badge/Python-3.10+-3776AB)]()
+[![Conflict](https://img.shields.io/badge/冲突-4级-red)]()
+[![China Weighted](https://img.shields.io/badge/中国加权-orange)]()
+[![Circuit Breaker](https://img.shields.io/badge/熔断器-yellow)]()
+[![Triangle](https://img.shields.io/badge/三角赋能-EC4899)]()
+[![DeepWiki](https://devin.ai/assets/askdeepwiki.png)](https://deepwiki.com/fangtaocai041/conflict-arbiter)
 
 ---
 
+## 🔺 S-T-V-P₁-P₂ 架构角色: **C (冲突仲裁)**
 
-## 📖 目录
+> 三生万物六体架构: `fish(S) → cognitive(V) → eon-core(Coord)`，衍生: `porpoise(P₁)` + `coilia(P₂)` + `culter(P₃)` + `conflict-arbiter(C)`.
+> **C** 是冲突解决层——当多个来源在保护状态、分类学或生态发现上存在分歧时，C 使用保护级加权、来源可信度评分和熔断器保护进行仲裁。
 
-- [哲学](#-哲学)
-- [快速开始](#-快速开始)
-- [架构](#-架构)
-- [功能特性](#-功能特性)
-- [项目结构](#-项目结构)
-- [生态体系](#-生态体系)
+## 📊 自我评价
+
+| 维度 | 评分 | 说明 |
+|------|:--:|------|
+| ⚖️ 仲裁逻辑 | ⭐⭐⭐⭐☆ | 4 级冲突升级 + 加权裁定 |
+| 🌐 多源集成 | ⭐⭐⭐⭐⭐ | IUCN API v4 + CITES Checklist API + 中国红皮书 + 国家重点保护 |
+| 🛡️ 熔断器 | ⭐⭐⭐⭐⭐ | 防止不可靠 API 源导致级联故障 |
+| 📡 三角集成 | ⭐⭐⭐⭐⭐ | 接收 S 层声明、V 层验证 |
 
 ---
 
-## 🏛️ 哲学
+## 📋 版本历史
 
-> 专精之知，聚焦之析。
+| 版本 | 日期 | 变更 |
+|------|------|------|
+| **v1.0.1** | 2026-06-20 | README 复原 — 从历史会话恢复完整文档 |
+| **v1.0.0** | 2026-06-17 | 初始发布 — IUCN API, CITES API, CLI 工具, 熔断器 |
 
-这是三生万物的衍生项目，由三角核心赋能（V0知识+V1搜索+Coord编排）。
+---
+
+## 🧩 这个项目是什么
+
+**Conflict Arbiter** 是三生万物生态中的冲突解决层。当鱼类生态助手说"此物种为濒危"，但认知搜索引擎找到更新的 IUCN 评估说"易危"——仲裁器介入。
+
+### 核心功能
+
+| 功能 | 说明 |
+|------|------|
+| **多源聚合** | IUCN 红名单 API v4 + CITES 物种+ Checklist API + 中国红皮书 + 国家重点保护名录 |
+| **4 级冲突分类** | INFORMATION → WARNING → CRITICAL → BLOCKING 严重度阶梯 |
+| **中国加权评分** | 中国来源在国内保护决策中获得加权 |
+| **熔断器** | 防止不可靠 API 源污染仲裁结果 |
+| **保护级仲裁** | 当来源保护状态不一致时，加权投票解决 |
 
 ---
 
 ## 🚀 快速开始
 
 ```bash
-git clone git@github.com:fangtaocai041/conflict-arbiter.git
+git clone https://github.com/fangtaocai041/conflict-arbiter.git
 cd conflict-arbiter
 pip install -e .
 python -m conflict_arbiter arbitrate "刀鲚"
@@ -37,36 +71,31 @@ python -m conflict_arbiter arbitrate "刀鲚"
 
 ---
 
-## 🏗️ 架构
+## ⚖️ 仲裁等级
 
-```
-  (见项目 src/ 目录)
-```
+| 等级 | 触发条件 | 响应 |
+|:--:|------|------|
+| **INFORMATION** | 微小差异（如年份差异） | 记录 + 通知 |
+| **WARNING** | 跨来源状态不一致 | 加权投票 + 报告 |
+| **CRITICAL** | 保护级冲突（如 EN vs VU） | 深入调查 + 建议 |
+| **BLOCKING** | 根本矛盾（如物种鉴定冲突） | 暂停管线 + 人工审查 |
 
 ---
 
 ## ✨ 功能特性
 
-| 功能 | 说明 |
-|------|------|
-| 🔬 领域分析 | 物种专属研究管线 |
-| 📡 三角赋能 | V0知识+V1搜索+Coord编排 |
-| 🧠 认知循环 | ReAct模式迭代分析 |
-
----
-
-## 📁 项目结构
-
-```
-conflict-arbiter/
-  (见项目 src/ 目录)
-```
+| 功能 | 状态 | 说明 |
+|------|:--:|------|
+| ⚖️ 4 级冲突 | ✅ | INFORMATION→WARNING→CRITICAL→BLOCKING 升级 |
+| 🌐 IUCN API 客户端 | ✅ | IUCN 红名单 API v4 实时评估数据 |
+| 📋 CITES API 客户端 | ✅ | CITES 物种+ Checklist API 附录列名查询 |
+| 🇨🇳 中国加权 | ✅ | 中国红皮书 + 国家重点保护加权 |
+| 🛡️ 熔断器 | ✅ | 防止不可靠源的级联故障 |
+| 🛠️ CLI 工具 | ✅ | `scripts/arbitrate.py` — 命令行仲裁 |
 
 ---
 
 ## 🔗 生态体系
-
-本项目是「三生万物」生态的 冲突仲裁专家引擎 (C)。
 
 ```
 三角核心 (sealed 3):
@@ -78,20 +107,28 @@ conflict-arbiter/
   🐬 porpoise-agent    → P₁ 江豚专研
   🐟 coilia-agent      → P₂ 刀鲚专研
   🐟 culter-agent      → P₃ 鲌类专研
-  🔥 conflict-arbiter  → C  冲突仲裁
+  🔥 conflict-arbiter  → C  冲突仲裁 ← 本项目
 ```
 
 > 🔥 和则无穷力量，分则顶尖专家引擎。
 
 ---
 
+## 📋 README 变更记录
+
+| 版本 | 日期 | 主题 | 变更内容 |
+|:------|:-----|:------|:-------------|
+| **v8.0** | 2026-06-20 | README 复原 | 从 stub 扩展: 完整哲学、架构、功能表、仲裁等级、自我评价、变更记录、DeepWiki 徽标 |
+| **v1.0.0** | 2026-06-17 | 初始 | Stub README — 基本项目描述 |
+
+---
+
+## 📜 许可证
+
+MIT © 2026 fangtaocai041
+
+---
+
 🌱 **万物皆变 · Panta Rhei**
 
-> 赫拉克利特说：人不能两次踏进同一条河流。
->
-> 我们说：你也不能用上个月的代码分析今天的生态数据。
-
-这个项目不是一套固定的工具集——它是一个**活的系统**。每个组件都内置了过期机制、版本追踪和涌现感知。随着你的研究深入、R包更新、新方法涌现，它会和你一起进化。
-
-*最后更新：2026-06-17　|　适用环境：Reasonix Code · DeepSeek 驱动*
-
+*最后更新：2026-06-20　|　适用环境：Reasonix Code · DeepSeek 驱动*
