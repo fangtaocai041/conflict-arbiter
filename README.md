@@ -1,4 +1,4 @@
-<p align="center">
+﻿<p align="center">
   🇨🇳 <a href="README.zh.md">中文</a>
 </p>
 
@@ -40,10 +40,10 @@
 
 | Version | Date | Changes |
 |---------|------|---------|
-| **v1.0.1** | 2026-06-20 | README Restoration ?full documentation from historical sessions |
+| **v1.0.1** | 2026-06-18 | README Restoration ?full documentation from historical sessions |
 | **v1.0.0** | 2026-06-17 | Initial release ?IUCN API, CITES API, CLI tool, circuit breaker |
 
-> **Latest**: v1.0.1 · 2026-06-20
+> **Latest**: v1.0.1 · 2026-06-18
 
 ---
 
@@ -195,7 +195,7 @@ Derived Projects (open N):
 
 | Version | Date | Theme | What Changed |
 |:--------|:-----|:------|:-------------|
-| **v8.0** | 2026-06-20 | README Restoration | Expanded from stub: full philosophy, architecture, features table, arbitration levels, self-assessment, README Changelog, DeepWiki badge |
+| **v8.0** | 2026-06-18 | README Restoration | Expanded from stub: full philosophy, architecture, features table, arbitration levels, self-assessment, README Changelog, DeepWiki badge |
 | **v1.0.0** | 2026-06-17 | Initial | Stub README ?basic project description |
 
 ---
@@ -212,4 +212,4 @@ MIT © 2026 fangtaocai041
 >
 > We say: You cannot arbitrate today's conflicts with last month's data.
 
-*Last updated: 2026-06-17　|　Environment: Reasonix Code · DeepSeek Powered*
+*Last updated: 2026-06-18　|　Environment: Reasonix Code · DeepSeek Powered*
