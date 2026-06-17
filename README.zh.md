@@ -1,7 +1,6 @@
 # 🔥 冲突仲裁者
 
-[![Python](https://img.shields.io/badge/python-3.10+-blue)](https://python.org)
-[![License](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
+![Python](https://img.shields.io/badge/Python-3.10%2B-blue?style=flat-square&logo=python) ![License](https://img.shields.io/badge/License-MIT-green?style=flat-square) ![Version](https://img.shields.io/badge/Version-v1.0.0-blueviolet?style=flat-square) ![Conflict](https://img.shields.io/badge/Conflict-4-level-red?style=flat-square) ![China](https://img.shields.io/badge/China-Weighted-orange?style=flat-square) ![Circuit](https://img.shields.io/badge/Circuit-Breaker-yellow?style=flat-square) ![Triangle](https://img.shields.io/badge/Triangle-Powered-9cf?style=flat-square)
 
 > 长江鱼类领域专研智能体。
 > 和则无穷力量，分则顶尖专家引擎。

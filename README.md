@@ -1,7 +1,6 @@
 # 🔥 Conflict Arbiter
 
-[![Python](https://img.shields.io/badge/python-3.10+-blue)](https://python.org)
-[![License](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
+![Python](https://img.shields.io/badge/Python-3.10%2B-blue?style=flat-square&logo=python) ![License](https://img.shields.io/badge/License-MIT-green?style=flat-square) ![Version](https://img.shields.io/badge/Version-v1.0.0-blueviolet?style=flat-square) ![Conflict](https://img.shields.io/badge/Conflict-4-level-red?style=flat-square) ![China](https://img.shields.io/badge/China-Weighted-orange?style=flat-square) ![Circuit](https://img.shields.io/badge/Circuit-Breaker-yellow?style=flat-square) ![Triangle](https://img.shields.io/badge/Triangle-Powered-9cf?style=flat-square)
 
 > Domain expert engine for Yangtze fish research.
 > Together infinite power, apart top expert engines.
