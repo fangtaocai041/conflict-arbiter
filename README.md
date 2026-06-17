@@ -280,6 +280,9 @@ MIT © 2026 fangtaocai041
 >
 > We say: You cannot arbitrate today's conflicts with last month's data.
 
+
+> 🔧 Agent constraints: [AGENTS.md](../AGENTS.md) · [core-constitution.md](../.reasonix/core-constitution.md) · [research-first](../skills/research-first.md) · [retro-session](../skills/retro-session.md)
+
 *Last updated: 2026-06-18 | Environment: Reasonix Code · DeepSeek Powered*
 
 ---
