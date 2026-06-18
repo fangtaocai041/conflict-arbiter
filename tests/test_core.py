@@ -1,4 +1,4 @@
-﻿"""Tests for conflict-arbiter — Conflict Arbitration Expert Engine (C)."""
+"""Tests for conflict-arbiter — Conflict Arbitration Expert Engine (C)."""
 import pytest
 import sys
 from pathlib import Path
