@@ -6,4 +6,10 @@
 角色: C (Conflict) → V4 (ArbitrateVertex)
 专精: 矛盾检测 + 可信度加权仲裁 + 熔断逻辑
 """
+
+import sys as _sys
+from pathlib import Path as _Path
+_PROJECT_ROOT = str(_Path(__file__).resolve().parent.parent)
+if _PROJECT_ROOT not in _sys.path:
+    _sys.path.insert(0, _PROJECT_ROOT)
 __version__ = "1.0.0"
