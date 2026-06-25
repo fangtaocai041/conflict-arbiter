@@ -83,6 +83,8 @@ class ConflictArbiter:
     def __init__(self, config_path: Optional[Path] = None) -> None:
         self._source_weights = dict(self.DEFAULT_SOURCE_WEIGHTS)
         self._cb = dict(self.CIRCUIT_BREAKER)
+        self._species_cache: Dict[str, Dict[str, Any]] = {}
+        self._cache_file: Optional[Path] = None
         if config_path and config_path.is_file():
             self._load_config(config_path)
 
@@ -586,7 +588,7 @@ class ConflictArbiter:
 
         # 1. 尝试加载本地预置数据
         local_sources: List[Dict[str, Any]] = []
-        local_data = cls._load_local_species_data(species_name)
+        local_data = arbiter._load_local_species_data(species_name)
         if local_data:
             local_sources.extend(local_data)
             logger.info(f"加载本地数据: {species_name} ({len(local_sources)} 条)")
@@ -722,21 +724,17 @@ class ConflictArbiter:
             "batch_fetched_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
         }
 
-    # ── 本地缓存层 ──
+    # ── 本地缓存层 (实例级别, 不再跨实例共享) ──
 
-    _species_cache: Dict[str, Dict[str, Any]] = {}
-    _cache_file: Optional[Path] = None
-
-    @classmethod
-    def _load_local_species_data(cls, species_name: str) -> List[Dict[str, Any]]:
+    def _load_local_species_data(self, species_name: str) -> List[Dict[str, Any]]:
         """从本地配置文件加载物种预置数据。
 
         查找 config/arbitration_rules.yaml 中的 species_data 节,
         或使用内置的中文物种数据。
         """
         # 1. 内存缓存
-        if species_name in ConflictArbiter._species_cache:
-            return list(ConflictArbiter._species_cache[species_name].get("sources", []))
+        if species_name in self._species_cache:
+            return list(self._species_cache[species_name].get("sources", []))
 
         # 2. 尝试从 YAML 配置文件加载
         cfg_path = Path(__file__).resolve().parent.parent / "config" / "arbitration_rules.yaml"
@@ -748,21 +746,20 @@ class ConflictArbiter:
                 entry = species_data.get(species_name.lower())
                 if entry:
                     sources = entry.get("sources", [])
-                    ConflictArbiter._species_cache[species_name] = {"sources": sources}
+                    self._species_cache[species_name] = {"sources": sources}
                     return list(sources)
             except Exception as exc:
                 logger.debug(f"加载本地物种数据失败: {exc}")
 
         # 3. 内置硬编码数据 (常见中国保护物种快速参考)
-        builtin = cls._get_builtin_species_data(species_name)
+        builtin = self._get_builtin_species_data(species_name)
         if builtin:
-            ConflictArbiter._species_cache[species_name] = {"sources": builtin}
+            self._species_cache[species_name] = {"sources": builtin}
             return list(builtin)
 
         return []
 
-    @classmethod
-    def _get_builtin_species_data(cls, name: str) -> List[Dict[str, Any]]:
+    def _get_builtin_species_data(self, name: str) -> List[Dict[str, Any]]:
         """内置常见鱼类保护数据 (快速参考, 避免 API 调用)。"""
         key = name.lower().strip()
         data: Dict[str, List[Dict[str, Any]]] = {
@@ -805,11 +802,10 @@ class ConflictArbiter:
         }
         return data.get(key, [])
 
-    @classmethod
-    def load_cache(cls, cache_path: Optional[Path] = None) -> int:
+    def load_cache(self, cache_path: Optional[Path] = None) -> int:
         """从 JSON 缓存文件加载仲裁结果。返回加载的记录数。"""
         if cache_path is None:
-            cache_path = cls._cache_file or (
+            cache_path = self._cache_file or (
                 Path.home() / ".conflict_arbiter_cache" / "arbitration_results.json"
             )
         if not cache_path.is_file():
@@ -817,28 +813,27 @@ class ConflictArbiter:
         try:
             data = json.loads(cache_path.read_text(encoding="utf-8"))
             if isinstance(data, dict):
-                cls._species_cache.update(data)
+                self._species_cache.update(data)
                 return len(data)
             return 0
         except Exception as exc:
             logger.warning(f"缓存加载失败: {exc}")
             return 0
 
-    @classmethod
-    def save_cache(cls, cache_path: Optional[Path] = None) -> int:
+    def save_cache(self, cache_path: Optional[Path] = None) -> int:
         """将内存中的仲裁结果保存为 JSON 缓存文件。返回保存的记录数。"""
         if cache_path is None:
-            cache_path = cls._cache_file or (
+            cache_path = self._cache_file or (
                 Path.home() / ".conflict_arbiter_cache" / "arbitration_results.json"
             )
         cache_path.parent.mkdir(parents=True, exist_ok=True)
-        cls._cache_file = cache_path
+        self._cache_file = cache_path
         try:
             cache_path.write_text(
-                json.dumps(cls._species_cache, ensure_ascii=False, default=str, indent=2),
+                json.dumps(self._species_cache, ensure_ascii=False, default=str, indent=2),
                 encoding="utf-8",
             )
-            return len(cls._species_cache)
+            return len(self._species_cache)
         except Exception as exc:
             logger.warning(f"缓存保存失败: {exc}")
             return -1
