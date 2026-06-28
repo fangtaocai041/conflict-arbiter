@@ -296,27 +296,29 @@ class TestBatchArbitrate:
 class TestCachePersistence:
     def test_save_and_load_cache(self, tmp_path, monkeypatch):
         from src.arbiter import ConflictArbiter
+        arbiter = ConflictArbiter()
         # 先触发数据加载以填充内存缓存
-        ConflictArbiter._species_cache.clear()
-        data = ConflictArbiter._load_local_species_data("Coilia nasus")
+        arbiter._species_cache.clear()
+        data = arbiter._load_local_species_data("Coilia nasus")
         assert len(data) > 0
 
         cache_file = tmp_path / "test_cache.json"
-        saved = ConflictArbiter.save_cache(cache_file)
+        saved = arbiter.save_cache(cache_file)
         assert saved > 0
         assert cache_file.is_file()
 
         # 清空, 再加载
-        ConflictArbiter._species_cache.clear()
-        loaded = ConflictArbiter.load_cache(cache_file)
+        arbiter._species_cache.clear()
+        loaded = arbiter.load_cache(cache_file)
         assert loaded > 0
         # 再次查询应命中缓存
-        data2 = ConflictArbiter._load_local_species_data("Coilia nasus")
+        data2 = arbiter._load_local_species_data("Coilia nasus")
         assert len(data2) > 0
 
     def test_load_nonexistent_cache(self):
         from src.arbiter import ConflictArbiter
-        loaded = ConflictArbiter.load_cache(Path("/nonexistent/path/cache.json"))
+        arbiter = ConflictArbiter()
+        loaded = arbiter.load_cache(Path("/nonexistent/path/cache.json"))
         assert loaded == 0
 
 
